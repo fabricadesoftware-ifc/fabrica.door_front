@@ -9,12 +9,7 @@ const showPassword = ref(false)
       <img src="/logo-tela-branca.png" alt="Logo fábrica de software">
     </div>
     <div class="flex flex-col h-1/2 text-start w-2/3 gap-3">
-      <h1 class="text-3xl font-bold text-start">Login</h1>
-      <p class="text-lg text-start font-light">Ainda não tem uma conta? 
-        <RouterLink :to="{ name: 'signup' }">
-          <span class="text-cyan cursor-pointer">Registre-se</span>!
-        </RouterLink>
-      </p>
+      <h1 class="text-3xl font-bold text-center ">Login</h1>
       <div class="flex flex-col gap-5">
         <div class="relative flex items-center">
           <i class="fa-solid fa-envelope absolute pl-4 text-2xl"></i>
@@ -34,9 +29,6 @@ const showPassword = ref(false)
           </div>
         </div>
       </div>
-      <RouterLink :to="{ name: 'forgotPassword' }">
-      <p class="text-end text-cyan font-light cursor-pointer">Esqueceu seu ID-TAG?</p>
-      </RouterLink>
       <button class="bg-cyan-700 p-4 rounded-2xl text-xl text-white font-black">Login</button>
     </div>
   </div>
