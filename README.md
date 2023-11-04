@@ -1,7 +1,7 @@
-# fabricaClass_frontEnd
-Aplicação Web para Avaliação da Qualidade do Ensino no IFC [FrontEnd]
+# Fabrica.door_front
+Desenvolvimento de uma pagina WEB para controle administrativo da porta da Fabrica De Software. [FrontEnd]
 
-# fabricaclass
+# Fabrica.door_front
 
 This template should help get you started developing with Vue 3 in Vite.
 
