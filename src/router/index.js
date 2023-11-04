@@ -9,20 +9,20 @@ const router = createRouter({
       component: () => import('../views/HomeView.vue')    
     },
     {
-      path: '/login',
-      name: 'login',
-      component: () => import('../views/LoginView.vue')   
-    },
-    {
-      path: '/signup',
+      path: '/singup ',
       name: 'signup',
       component: () => import('../views/SignupView.vue')    
     },
     {
-      path: '/forgotPassword',
-      name: 'forgotPassword',
-      component: () => import('../views/ForgotPasswordView.vue')
-    } 
+      path: '/main',
+      name: 'main',
+      component: () => import('../views/MainView.vue')
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/DashboardView.vue')
+    }
   ]
 })
 
