@@ -8,7 +8,7 @@
       <img src="/logo-tela-branca.png" alt="Logo fábrica de software">
     </div>
     <div class="flex flex-col h-1/2 text-start w-2/3 gap-3">
-      <h1 class="text-3xl font-bold text-start">Registre uma TAG</h1>
+      <h1 class="text-3xl font-bold text-center">Registre uma TAG</h1>
       <div class="flex flex-col gap-6">
         <div class="relative flex items-center">
           <i class="fa-solid fa-envelope absolute pl-4 text-2xl"></i>
@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-      <button class="bg-cyan-700 p-4 rounded-2xl text-xl text-white font-black mt-4" @click="doSignup()">Registre a TAG </button>
+      <button class="bg-green-600 hover:bg-green-700 p-4 rounded-2xl text-xl text-white font-black mt-4" @click="doSignup()">Registre a TAG </button>
     </div>
   </div>
   

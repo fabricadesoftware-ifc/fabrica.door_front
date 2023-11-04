@@ -18,7 +18,7 @@
 
       <RouterLink :to="{ name: 'signup' }">
         <div class="relative flex items-center">
-          <button class="bg-cyan-500 hover:bg-cyan-700 p-4 rounded-2xl text-xl text-white font-black mt-4">
+          <button class="bg-green-600 hover:bg-green-700 p-4 rounded-2xl text-xl text-white font-black mt-4">
             Registre uma nova TAG
           </button>
         </div>
