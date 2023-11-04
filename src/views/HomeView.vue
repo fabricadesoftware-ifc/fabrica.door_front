@@ -54,7 +54,7 @@ const showPassword = ref(false)
 
       <div class="flex flex-col h-1/2 text-center w-3/3 gap-3">
         <RouterLink :to="{ name: 'main' }">
-          <button class="bg-cyan-700 p-4 rounded-2xl text-xl text-white font-black">Login</button>
+          <button class="bg-orange-600  hover:bg-orange-700 p-4 rounded-2xl text-xl text-white font-black">Login</button>
         </RouterLink>
       </div>
     </div>
