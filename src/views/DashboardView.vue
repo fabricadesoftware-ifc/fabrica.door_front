@@ -1,4 +1,17 @@
-<script setup></script>
+<script setup>
+import { ref, onMounted } from 'vue';	
+import instance from '../plugins/axios';
+
+
+const tags = ref([]);
+
+onMounted(async () => {
+  
+  let response = await instance.get('/rfid/');
+  tags.value = response.data;
+});
+
+</script>
 
 <template>
   <div class="flex justify-center py-3">
@@ -68,6 +81,11 @@
       </div>
       <!--/Metric Card-->
     </div>
+    <ul>
+      <li>
+        {{ tags }}
+      </li>
+    </ul>
   </div>
 </template>
 
