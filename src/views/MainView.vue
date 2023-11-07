@@ -1,6 +1,14 @@
 <script setup>
+import esp32 from '../plugins/esp32';
 
-
+async function openDoor() {
+  try {
+    const response = await esp32.post('/');
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+}
 </script>
 <template>
   <div class="m-auto w-1/2 flex flex-col bg-white h-screen justify-center items-center gap-6">
@@ -25,7 +33,7 @@
       </RouterLink>
 
       <div class="relative flex items-center">
-        <button class="bg-red-600 hover:bg-red-700 p-4 rounded-2xl text-xl text-white font-black mt-4 w-full">
+        <button class="bg-red-600 hover:bg-red-700 p-4 rounded-2xl text-xl text-white font-black mt-4 w-full" @click="openDoor()">
           Open the Door!!!!!
         </button>
       </div>
