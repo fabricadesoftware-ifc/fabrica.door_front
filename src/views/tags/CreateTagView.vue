@@ -3,14 +3,20 @@ import { ref } from 'vue'
 import instance from '../../plugins/axios'
 import sidebar from '../../components/SideBar.vue'
 
-const rfid = ref('')
+const rfid = ref()
 const userId = ref()
 const sucess = ref(false)
 const error = ref(false)
 
+const falseRfids = ref([{ rfidTag: '14CCC73' }, { rfidTag: '14EEB73' }, { rfidTag: '14ESE73' }])
+
 async function returnToFalse() {
   sucess.value = false
   error.value = false
+}
+
+async function fillUp(rfidTag) {
+    rfid.value = rfidTag.rfidTag
 }
 
 async function doSignup() {
@@ -80,9 +86,15 @@ async function doSignup() {
         </div>
         <div class="w-full px-4 py-5 bg-white rounded-lg shadow">
           <div class="text-sm font-medium text-gray-500 truncate">Tags para liberar</div>
-          <div class="mt-1 text-3xl font-semibold text-gray-900">14EEE73</div>
-          <div class="mt-1 text-3xl font-semibold text-gray-900">14EEE73</div>
-          <div class="mt-1 text-3xl font-semibold text-gray-900">14EEE73</div>
+
+          <div v-for="(rfidTag, index) in falseRfids" v-bind:key="rfidTag">
+            <div
+              class="mt-1 text-3xl font-semibold text-gray-900"
+              @click="fillUp(falseRfids[index])"
+            >
+              {{ rfidTag.rfidTag }}
+            </div>
+          </div>
         </div>
       </div>
     </div>
