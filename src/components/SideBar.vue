@@ -26,7 +26,7 @@
       <div class="relative">
         <div class="text-white">
           <!-- User -->
-          <h1>Eduardo da Silva (placeholder)</h1>
+          <h1>{{ store.user.email }}</h1>
         </div>
       </div>
       <div class="flex-1">
@@ -72,7 +72,7 @@
             </RouterLink>
           </li>
           <li class="rounded-sm">
-            <a class="flex items-center p-2 space-x-3 rounded-md" @click="openDoor">
+            <button class="flex items-center p-2 space-x-3 rounded-md" @click="openDoor">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -89,10 +89,14 @@
               </svg>
 
               <span class="text-gray-100"> Liberação </span>
-            </a>
+            </button>
           </li>
           <li class="rounded-sm">
-            <a href="#" class="flex items-center p-2 space-x-3 rounded-md">
+            <button
+              href="#"
+              class="flex items-center p-2 space-x-3 rounded-md"
+              @click="store.logOut"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -109,7 +113,7 @@
               </svg>
 
               <span class="text-gray-100"> Logout </span>
-            </a>
+            </button>
           </li>
         </ul>
       </div>
@@ -120,9 +124,12 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import { useUserStore } from '../stores/user'
+
 import esp from '../plugins/esp32'
 
 const isOpen = ref(false)
+const store = useUserStore()
 
 function openDoor() {
   esp.post('/')
