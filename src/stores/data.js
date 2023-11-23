@@ -7,7 +7,8 @@ export const useDataStore = defineStore('data', () => {
     users: [],
     tags: [],
     notUsed: [],
-    notOwner: []
+    notOwner: [],
+    lastUsed: ''
   })
 
   const fetchData = async () => {
@@ -16,6 +17,9 @@ export const useDataStore = defineStore('data', () => {
 
     const tags = await api.get('rfid')
     data.value.tags = tags.data
+
+    const last = await api.get('last')
+    data.value.lastUsed = last.data
 
     data.value.tags.forEach((tag) => {
       if (tag.valid == false) {
