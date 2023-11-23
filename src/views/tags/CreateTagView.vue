@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { useDataStore } from '../../stores/data'
 import instance from '../../plugins/axios'
 import sidebar from '../../components/SideBar.vue'
 
@@ -7,8 +8,7 @@ const rfid = ref()
 const userId = ref()
 const sucess = ref(false)
 const error = ref(false)
-
-const falseRfids = ref([{ rfidTag: '14CCC73' }, { rfidTag: '14EEB73' }, { rfidTag: '14ESE73' }])
+const Data = useDataStore()
 
 async function returnToFalse() {
   sucess.value = false
@@ -16,7 +16,11 @@ async function returnToFalse() {
 }
 
 async function fillUp(rfidTag) {
-    rfid.value = rfidTag.rfidTag
+  rfid.value = rfidTag.rfid
+}
+
+async function fillUpUser(user) {
+  userId.value = user.id
 }
 
 async function doSignup() {
@@ -27,9 +31,9 @@ async function doSignup() {
   }
 
   try {
-    const response = await instance.post('create', {
+    const response = await instance.post('assign', {
       rfid: rfid.value,
-      id: userId.value
+      userId: userId.value
     })
     console.log(response)
     sucess.value = true
@@ -45,11 +49,15 @@ async function doSignup() {
     <div class="container mx-auto mt-12">
       <div class="grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3">
         <div class="w-full px-4 py-5 bg-white rounded-lg shadow">
-          <div class="text-sm font-medium text-gray-500 truncate">Tags e usuários</div>
-          <div class="mt-1 text-3xl font-semibold text-gray-900">João Felipi - XXXXXXXX</div>
-          <div class="mt-1 text-3xl font-semibold text-gray-900">Lucas Antonete - XXXXXXX</div>
-          <div class="mt-1 text-3xl font-semibold text-gray-900">15</div>
-          <div class="mt-1 text-3xl font-semibold text-gray-900">15</div>
+          <div class="text-sm font-medium text-gray-500 truncate">Usuários</div>
+          <div
+            class="mt-1 text-xl font-semibold text-gray-900"
+            v-for="person in Data.data.notOwner"
+            v-bind:key="person.uid"
+            @click="fillUpUser(person)"
+          >
+            {{ person.name }}
+          </div>
         </div>
         <div class="w-full px-4 py-5 bg-white rounded-lg shadow">
           <div class="text-sm font-medium text-gray-500 truncate">Criar Tag</div>
@@ -87,12 +95,12 @@ async function doSignup() {
         <div class="w-full px-4 py-5 bg-white rounded-lg shadow">
           <div class="text-sm font-medium text-gray-500 truncate">Tags para liberar</div>
 
-          <div v-for="(rfidTag, index) in falseRfids" v-bind:key="rfidTag">
+          <div v-for="(rfidTag, index) in Data.data.notUsed" v-bind:key="index">
             <div
               class="mt-1 text-3xl font-semibold text-gray-900"
-              @click="fillUp(falseRfids[index])"
+              @click="fillUp(Data.data.notUsed[index])"
             >
-              {{ rfidTag.rfidTag }}
+              {{ rfidTag.rfid }}
             </div>
           </div>
         </div>

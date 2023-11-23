@@ -1,7 +1,7 @@
 <script setup>
 import { useUserStore } from '../../stores/user'
-import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import { ref } from 'vue'
 
 const email = ref('')
 const password = ref('')
@@ -9,7 +9,7 @@ const password = ref('')
 const User = useUserStore()
 
 const login = async () => {
-  User.logWithEmail(email.value, password.value)
+  User.registerWithEmail(email.value, password.value)
 }
 </script>
 
@@ -18,7 +18,7 @@ const login = async () => {
     <div class="mt-12">
       <div class="w-96 gap-6 mb-6">
         <div class="w-full px-4 py-8 bg-gray-700 rounded-lg shadow">
-          <div class="text-sm font-medium text-gray-100 truncate mb-3">Login</div>
+          <div class="text-sm font-medium text-gray-100 truncate mb-3">Registrar</div>
           <div>
             <div class="relative h-10 w-full min-w-[200px] mb-2">
               <input
@@ -51,10 +51,10 @@ const login = async () => {
                 data-ripple-dark="true"
                 @click="login"
               >
-                Login
+                Registrar
               </button>
             </div>
-            <RouterLink class="text-sm text-blue-300" to="/register"> Registrar-se </RouterLink>
+            <RouterLink class="text-sm text-blue-300" to="/login"> Login </RouterLink>
           </div>
         </div>
       </div>
